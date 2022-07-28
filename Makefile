@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: seyeo <responsible@kakao.com>              +#+  +:+       +#+         #
+#    By: seyeo <seyeo@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/27 00:07:02 by seyeo             #+#    #+#              #
-#    Updated: 2022/07/28 13:19:51 by seyeo            ###   ########.fr        #
+#    Updated: 2022/07/28 20:59:46 by seyeo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,8 +55,10 @@ OBJS_M = $(SRCS_M:%.c=%.o)
 OBJS_B = $(SRCS_B:%.c=%.o)
 
 all : $(NAME)
+.PHONY: all
 
 bonus : $(NAME_B)
+.PHONY: bonus
 
 $(NAME) : ${OBJS_M}
 	$(CC) $(CFLAGS) $(OPTIONS) $(OBJS_M) -o $(NAME)
@@ -66,11 +68,12 @@ $(NAME_B) : ${OBJS_B}
 
 clean:
 		$(RM) $(OBJS_M) $(OBJS_B)
+.PHONY: clean
 
 fclean: clean
 		$(RM) $(NAME) $(NAME_B)
+.PHONY: fclean
 
 re: $(MAKE) fclean
 	$(MAKE) all
-
-.PHONY: all clean fclean re bonus
+.PHONY: re
